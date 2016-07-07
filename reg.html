@@ -1,0 +1,133 @@
+<html>
+  <head>
+    <h1>REGISTER!</h1>
+    <script>
+    function validateFn(){
+      var fn = document.getElementById("firstname");
+      var char=/[0-9 -]/;
+      if(fn.value==""||fn.value==null){
+        document.getElementById('emptyFname').style.display = "block";
+        return false;
+      }
+      else
+      {
+        if(fn.value.match(char)){
+        document.getElementById('fnameNotchar').style.display = "block";
+	return false;
+        }
+        else{
+          document.getElementById('fnameNotchar').style.display = "none";
+          document.getElementById('emptyFname').style.display = "none";
+	  return true;
+        }        
+      }
+    }
+    function validateLn(){
+      var ln    = document.getElementById("lastname");
+      var char=/[0-9 -]/;
+      if(ln.value==""||ln.value==null){
+        document.getElementById('emptyLname').style.display = "block";
+        return false;
+      }
+      else
+      {
+        if(ln.value.match(char)){
+        document.getElementById('lnameNotchar').style.display = "block";
+	return false;
+        }
+	else{
+        document.getElementById('lnameNotchar').style.display = "none";
+        document.getElementById('emptyLname').style.display = "none";
+	return true;
+        }
+      } 
+    }
+    function validateAge(){
+      var age   = document.getElementById("age");
+      var numbers = /[0-9]/;
+      if(age.value==""||age.value==null){
+        document.getElementById('emptyAge').style.display = "block";
+        return false;
+      }
+      else
+      {
+        if(age.value.match(numbers)){
+        document.getElementById('emptyAge').style.display = "none";
+	document.getElementById('ageNan').style.display = "none";        
+	return true;
+        }
+        else{
+        document.getElementById('ageNan').style.display = "block";
+        document.getElementById('emptyAge').style.display = "none";
+        return false;
+        }
+      }
+    }
+    function validateEmail(){
+      var email = document.getElementById("email");
+      if(email.value==""||email.value==null){
+        document.getElementById('emptyEmail').style.display = "block";
+        return false;
+      }
+      else{
+        document.getElementById('emptyEmail').style.display = "none";
+        return true;
+      }       
+    }
+    function validatePass(){
+      var pass  = document.getElementById("pass");
+      if(pass.value==""||pass.value==null){
+    	document.getElementById('emptyPassword').style.display = "block";
+        return false;
+      }
+      else{
+	document.getElementById('emptyPassword').style.display = "none";
+        return true;
+      }
+    }
+
+    function validateCpass(){
+      var cpass = document.getElementById("cpass");
+      if(cpass.value==""||cpass.value==null){
+    	document.getElementById('emptyCpassword').style.display = "block";
+        return false;
+      }
+      else
+      {
+	if(pass.value!=cpass.value){
+    	document.getElementById('passNotmatch').style.display = "block";
+        document.getElementById('emptyCpassword').style.display = "none";
+        return false;
+        }
+        else{
+    	document.getElementById('passNotmatch').style.display = "none";
+        document.getElementById('emptyCpassword').style.display = "none";
+        return true;
+        }
+      }
+    }
+</script>
+  </head>
+  <body>
+    <form name="regForm" onsubmit="return validateFn(),validateLn(),validateAge(),validateEmail(),validateAge(),validatePass(),validateCpass()">
+	First name :<input type="text" id="firstname"onblur="validateFn()"><br>
+	<span id="emptyFname" style="display: none;">First name cannot be empty</span>
+	<span id="fnameNotchar" style="display: none;">Enter only alphabets</span>
+  	lastname :<input type="text" id="lastname"onblur="validateLn()"><br>
+	<span id="emptyLname" style="display: none;">Last name cannot be empty</span>
+	<span id="lnameNotchar" style="display: none;">Enter only alphabets</span>
+        Age :<input type="text" id="age" onblur="validateAge()"><br>
+	<span id="emptyAge" style="display: none;">Age cannot be empty</span>
+	<span id="ageNan" style="display: none;">Enter number only</span>
+        email:<input type="text" id="email" onblur="validateEmail()"><br>
+	<span id="emptyEmail" style="display: none;">Email cannot be empty</span>
+        passowrd:<input type="password" id="pass" onblur="validatePass()"><br>
+	<span id="emptyPassword" style="display: none;">Password cannot be empty</span>
+        confirm passowrd:<input type="password" id="cpass" onblur="validateCpass()"><br>
+	<span id="emptyCpassword" style="display: none;">please confirm password</span>
+	<span id="passNotmatch" style="display: none;">password did not match</span>
+        <input type="submit" value="submit">
+	<a href="login.html">login</a>
+	</form>
+	</body>
+</html>
